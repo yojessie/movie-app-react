@@ -6,9 +6,11 @@ function Movie({ id, title, img, summary, description, genres }) {
     <Link to={`/movie/${id}`}>
       <div className="movie-card">
         <img className="image" src={img} alt={title} />
-        <div>
+        <div className="information">
           <h1 className="title">{title}</h1>
-          <p className="summary">{summary}</p>
+          <p className="summary">
+            {summary.length <= 500 ? summary : `${summary.slice(0, 500)}...`}
+          </p>
           <p className="summary">{description}</p>
           <ul className="genres">
             {genres.map((genre) => (

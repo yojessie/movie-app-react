@@ -25,17 +25,20 @@ function Home() {
       {loading ? (
         <Loading />
       ) : (
-        <div>
-          {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              img={movie.medium_cover_image}
-              summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))}
+        <div className="section">
+          <h1 className="home-title">Movie List</h1>
+          <div className="movie-list">
+            {movies.map((movie) => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                img={movie.medium_cover_image}
+                summary={movie.summary}
+                genres={movie.genres}
+              />
+            ))}
+          </div>
         </div>
       )}
     </div>

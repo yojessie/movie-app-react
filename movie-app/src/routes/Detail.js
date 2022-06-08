@@ -1,6 +1,5 @@
 import { useCallback, useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import Movie from "../components/Movie";
 import Loading from "../components/Loading";
 import "./Detail.css";
 
@@ -28,18 +27,24 @@ function Detail() {
       {loading ? (
         <Loading />
       ) : (
-        <div>
+        <div className="section">
           <Link to="/" className="home-button">
-            Go Home
+            Go back
           </Link>
-          <Movie
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            img={movie.medium_cover_image}
-            genres={movie.genres}
-            description={movie.description_full}
-          />
+          <div className="detail">
+            <img
+              className="image-large"
+              src={movie.large_cover_image}
+              alt={movie.title}
+            />
+            <h1 className="title">{movie.title}</h1>
+            <ul className="genres">
+              {movie.genres.map((genre) => (
+                <li key={genre}>{genre}</li>
+              ))}
+            </ul>
+            <p className="description">{movie.description_full}</p>
+          </div>
         </div>
       )}
     </div>

@@ -1,6 +1,30 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .home-button {
+  position: absolute;
+  display: inline-block;
   padding: 8px 16px;
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 24px;
+}
+
+.image-large {
+  width: 500px;
+  height: 750px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.genres {
+  margin-bottom: 16px;
+}
+
+.description {
+  width: 500px;
+  text-align: center;
 }
