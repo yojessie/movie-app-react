@@ -2,6 +2,7 @@ import { useCallback, useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Movie from "../components/Movie";
 import Loading from "../components/Loading";
+import "./Detail.css";
 
 function Detail() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,9 @@ function Detail() {
         <Loading />
       ) : (
         <div>
-          <Link to="/">Go Home</Link>
+          <Link to="/" className="home-button">
+            Go Home
+          </Link>
           <Movie
             key={movie.id}
             id={movie.id}

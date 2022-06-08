@@ -9,12 +9,12 @@ function Movie({ id, title, img, summary, description, genres }) {
         <div>
           <h1 className="title">{title}</h1>
           <p className="summary">{summary}</p>
+          <p className="summary">{description}</p>
           <ul className="genres">
             {genres.map((genre) => (
               <li key={genre}>{genre}</li>
             ))}
           </ul>
-          <p>{description}</p>
         </div>
       </div>
     </Link>
