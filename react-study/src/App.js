@@ -6,22 +6,17 @@ const BigDiv = styled.div`
   display: flex;
 `;
 
-const DivOne = styled.div`
+const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: tomato;
+  background-color: ${(props) => props.bgColor};
   width: 300px;
   height: 300px;
 `;
 
-const DivTwo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: bisque;
-  width: 300px;
-  height: 300px;
+const Circle = styled(Box)`
+  border-radius: 50%;
 `;
 
 const Text = styled.h1`
@@ -33,12 +28,12 @@ const Text = styled.h1`
 function App() {
   return (
     <BigDiv>
-      <DivOne>
+      <Box bgColor="tomato">
         <Text>HELLO</Text>
-      </DivOne>
-      <DivTwo>
+      </Box>
+      <Circle bgColor="bisque">
         <Text>WORLD</Text>
-      </DivTwo>
+      </Circle>
     </BigDiv>
   );
 }
