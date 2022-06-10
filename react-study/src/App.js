@@ -17,6 +17,11 @@ const rotation = keyframes`
   }
 `;
 
+const Text = styled.h1`
+  color: white;
+  animation: ${rotation} 5s linear infinite;
+`;
+
 const Box = styled.div`
   display: flex;
   justify-content: center;
@@ -24,7 +29,14 @@ const Box = styled.div`
   background-color: ${(props) => props.bgColor};
   width: 300px;
   height: 300px;
+  ${Text} {
+    &:hover {
+      opacity: 0;
+    }
+  }
 `;
+// &{컴포넌트명} 의 형태로 내부 요소를 잡아주면 지정된 태그의 종류에 영향받지 않는다.
+// 위의 경우 Box 안에 있는 Text만 잡아줄 수 있다.
 
 const Circle = styled(Box)`
   border-radius: 50%;
@@ -37,11 +49,6 @@ const Circle = styled(Box)`
 `;
 // 컴포넌트 내부에 있는 일반 태그명을 선택자로 타케팅 할 수 있다.
 // hover등의 기능은 &:에 붙여서 사용한다.
-
-const Text = styled.h1`
-  color: white;
-  animation: ${rotation} 5s linear infinite;
-`;
 
 const Button = styled.button`
   display: flex;
@@ -76,6 +83,7 @@ function App() {
     <div>
       <Wrapper>
         <Box bgColor="tomato">
+          <Text as="p">HELLO</Text>
           <Text>HELLO</Text>
         </Box>
         <Circle bgColor="bisque">
