@@ -19,7 +19,6 @@ const rotation = keyframes`
 
 const Text = styled.h1`
   color: white;
-  animation: ${rotation} 5s linear infinite;
 `;
 
 const Box = styled.div`
@@ -30,6 +29,7 @@ const Box = styled.div`
   width: 300px;
   height: 300px;
   ${Text} {
+    animation: ${rotation} 5s linear infinite;
     &:hover {
       opacity: 0;
     }
@@ -78,6 +78,18 @@ const Input = styled.input.attrs({
 // styled components can use 'attrs' to give a property for all components
 // styled component makes a random class name
 
+const ThemeTest = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+  background-color: ${(props) => props.theme.backgroundColor};
+  ${Text} {
+    color: ${(props) => props.theme.textColor};
+  }
+`;
+
 function App() {
   return (
     <div>
@@ -100,6 +112,9 @@ function App() {
         <Input />
         <Input />
       </Wrapper>
+      <ThemeTest>
+        <Text>Theme Test</Text>
+      </ThemeTest>
     </div>
   );
 }
