@@ -1,11 +1,20 @@
 // npm i styled-components
 // install the extension : vscode-styled-components
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import "./App.css";
 
-const BigDiv = styled.div`
+const Wrapper = styled.div`
   display: flex;
   margin-bottom: 40px;
+`;
+
+const rotation = keyframes`
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 `;
 
 const Box = styled.div`
@@ -23,6 +32,7 @@ const Circle = styled(Box)`
 
 const Text = styled.h1`
   color: white;
+  animation: ${rotation} 5s linear infinite;
 `;
 
 const Button = styled.button`
@@ -56,24 +66,24 @@ const Input = styled.input.attrs({
 function App() {
   return (
     <div>
-      <BigDiv>
+      <Wrapper>
         <Box bgColor="tomato">
           <Text>HELLO</Text>
         </Box>
         <Circle bgColor="bisque">
           <Text>WORLD</Text>
         </Circle>
-      </BigDiv>
-      <BigDiv as="section">
+      </Wrapper>
+      <Wrapper as="section">
         <Button>Button</Button>
         <Button as="a" href="/">
           Anchor
         </Button>
-      </BigDiv>
-      <BigDiv>
+      </Wrapper>
+      <Wrapper>
         <Input />
         <Input />
-      </BigDiv>
+      </Wrapper>
     </div>
   );
 }
