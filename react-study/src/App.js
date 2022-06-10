@@ -28,7 +28,15 @@ const Box = styled.div`
 
 const Circle = styled(Box)`
   border-radius: 50%;
+  h1 {
+    color: tomato;
+    &:hover {
+      color: white;
+    }
+  }
 `;
+// 컴포넌트 내부에 있는 일반 태그명을 선택자로 타케팅 할 수 있다.
+// hover등의 기능은 &:에 붙여서 사용한다.
 
 const Text = styled.h1`
   color: white;
@@ -71,7 +79,7 @@ function App() {
           <Text>HELLO</Text>
         </Box>
         <Circle bgColor="bisque">
-          <Text>WORLD</Text>
+          <h1>WORLD</h1>
         </Circle>
       </Wrapper>
       <Wrapper as="section">
