@@ -5,17 +5,17 @@ import App from "./App";
 
 const darkTheme = {
   textColor: "whitesmoke",
-  backgroundColor: "#222",
+  backgroundColor: "#2f2f2f",
 };
 
 const lightTheme = {
-  textColor: "#222",
+  textColor: "#2f2f2f",
   backgroundColor: "whitesmoke",
 };
-// theme color를 사용하기 위해서 provider를 이용할 수 있다.
-// 각 theme의 prop name이 같아야 한다.
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
