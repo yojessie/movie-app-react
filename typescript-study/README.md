@@ -13,7 +13,7 @@
    <br>명령어를 실행해서 styled-components의 타입을 정의해 주었다.
 
 - @types 에는 많은 사람들이 npm 저장소에 정리해둔 다양한 패키지의 타입이 정의되어 있다 -여러 사람이 styled-components의 소스코드를 보고 Typescript에게 설명해 줄 말을 만들어 내서 정리해 둔 것
-- DefinitelyTyped community : https://github.com/DefinitelyTyped/DefinitelyTyped)
+- DefinitelyTyped community : https://github.com/DefinitelyTyped/DefinitelyTyped
 
    <br>
    <br>
@@ -116,7 +116,7 @@ jessie.name = "Mike" // error (the name property is 'read only')
 ### 7. Tuple
 
 : array 값의 갯수와 순서를 지정하는 것
-: 아이템 갯수가 안맞거나, 타입의 순서가 안맞으면 에러 발생
+<br>: 아이템 갯수가 안맞거나, 타입의 순서가 안맞으면 에러 발생
 
 ```javascript
 const player: [string, number, boolean] = ["Jessie", 1, true];
