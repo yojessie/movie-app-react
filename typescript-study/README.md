@@ -242,10 +242,77 @@ add(1, 2, 3); // 두 경우 모두 문제 없음
 
 <br>
 
-### 3. Polymorphism
+### 3. Polymorphism (generic)
 
-: //
+: poly(many) morphism(structure) <br>
+: generic을 설정해 여러 타입을 가질 수 있게 하는 것. <br>
+: 모든 경우의 수에 해당하는 call sygnature를 작성해 줄 필요가 없어진다.
 
 ```typescript
-//
+type SuperPrint = {
+  (arr: number[]): void;
+  (arr: (number | string | boolean)[]): void;
+  // 등으로 여러 타입의 모든 경우에 수를 대응할 수 없다.
+};
+```
+
+```typescript
+type SuperPrint = {
+  <T>(arr: T[]): T;
+  // 앞에 꺽쇠괄호를 붙여 generic 타입을 할당한다.
+  // 이름은 상관없다.
+};
+
+const superPrint: SuperPrint = (arr) => console.log(arr);
+
+superPrint([1, 2, 3]);
+superPrint(["a", "b", "c"]);
+superPrint([true, false, true]);
+superPrint([1, "b", true]);
+// 모든 타입의 다양한 조합을 해결할 수 있다.
+// 다양한 경우를 커버하는 함수를 작성할때 유용하다.
+// generic 타입으로 선언되면, 타입스크립트가 자료를 보고 타입을 알아낸다.
+```
+
+### generic VS any
+
+- generic : 구체적인 타입을 지정하지 않고 다양한 인수와 리턴값에 대한 타입을 처리할 수 있게 한다. generic을 통해 함수등의 재사용성을 높일 수 있다.
+- any : 모든게 가능하기 때문에 타입 체커로부터 보호받지 못한다.
+
+```typescript
+type SuperPrint = {
+  (arr: any): any;
+};
+
+const superPrint: SuperPrint = (arr) => arr[0];
+
+const a = superPrint([1, "b", true]);
+a.toUpperCase();
+// a의 0번째 자료는 number이기떄문에 .toUpperCase()를 실행할 수 없어야한다.
+// 실행되지 못해야 하는 코드인데 문제없이 실행되어버린다.
+```
+
+<br>
+
+### 실제 generic의 사용
+
+: 직접 설정할일은 거의 없으나, 라이브러리나 패키지를 가져와 함수를 사용할때 generic으로 지정된 타입을 명확하게 하기 위해 많이 사용한다. (React의 useState가 generic으로 디자인되어 있다.)
+
+```typescript
+type Player<T> = {
+  name: string;
+  extraInfo: T;
+};
+
+const jessie: Player<{}> = {
+  name: "Jessie",
+  extraInfo: {
+    favorite: "keyboard",
+  },
+};
+
+const Tony: Player<null> = {
+  name: "Tony",
+  extraInfo: null,
+};
 ```
