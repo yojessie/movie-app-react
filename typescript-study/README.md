@@ -316,3 +316,83 @@ const Tony: Player<null> = {
   extraInfo: null,
 };
 ```
+
+<br>
+
+## [ Classes & Interfaces ]
+
+### 1. JS와 TS의 Class 비교
+
+: Typescript를 통해 Javscript의 객체지향 코드를 더 안전하고 좋게 만들 수 있다. <br><br>
+
+### [ Typescript code ] <br>
+
+- 파라미터를 선언하는 것만으로 constructor를 만들 수 있다.
+- 파라미터에 타입을 선언하면서 private, protected, public과 같은 키워드를 사용할 수 있다.
+
+```typescript
+class Player {
+  constructor(
+    private firstName: string,
+    private lastName: string,
+    public nickName: string
+  ) {}
+}
+```
+
+### [ Javascript code ]
+
+```javascript
+class Player {
+  constructor(firstName, lastName, nickName) {
+    this.firstName = firstName;
+    this.lastName = laseName;
+    this.nickName = nickName;
+  }
+}
+```
+
+<br>
+
+### 2. Abstract Class 추상클래스
+
+: 추상클래스는 다른 클래스가 상속받게 하기 위한 클래스이다. <br>
+: 추상클래스로 직접 새로운 인스턴스를 만들 수는 없다.<br>
+: 추상클래스 안에서 직접 메소드를 구현해서 상속받은 클래스가 바로 사용하게 할 수도 있지만, 추상메소드에 call signature를 넣어 정의하면 상속받은 클래스 내부에서 메소드 내용을 각각 구현해 사용할 수도 있다.
+
+```typescript
+abstract class User {
+  constructor(
+    private firstName: string,
+    private lastName: string,
+    protected nickName: string
+  ) {}
+  abstract getNickName(): void;
+  // 추상메소드를 만들려면 내부에서 직접 메소드 내용을 구현하지 않는다.
+}
+
+// 추상클래스로 바로 인스턴스 만들기는 불가능
+// const jessie = new User 는 사용할 수 없음
+
+class Player extends User {
+  getNickName() {
+    console.log(this.nickName);
+    // 추상클래스를 상속받는 클래스에서 추상메소드의 내용을 구현한다.
+    // 구현하지 않으면, TS가 에러를 표시해준다.
+  }
+}
+
+const jessie = new Player("Jessie", "Y", "yojessie");
+```
+
+<br>
+
+### 3. private, protected, public 접근가능 위치
+
+: 타입 선언 앞에 어떤 키워드를 사용했느냐에 따라 해당 파라미터의 사용 범위가 달라진다.
+
+| 키워드    | 선언한 클래스 내 | 상속받은 클래스 내 | 인스턴스 내 |
+| --------- | ---------------- | ------------------ | ----------- |
+| private   | O                | X                  | X           |
+| protected | O                | O                  | X           |
+| public    | O                | O                  | O           |
