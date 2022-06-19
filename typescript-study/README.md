@@ -325,7 +325,7 @@ const Tony: Player<null> = {
 
 : Typescript를 통해 Javscript의 객체지향 코드를 더 안전하고 좋게 만들 수 있다. <br><br>
 
-### [ Typescript code ] <br>
+### Typescript code <br>
 
 - 파라미터를 선언하는 것만으로 constructor를 만들 수 있다.
 - 파라미터에 타입을 선언하면서 private, protected, public과 같은 키워드를 사용할 수 있다.
@@ -340,7 +340,7 @@ class Player {
 }
 ```
 
-### [ Javascript code ]
+### Javascript code
 
 ```javascript
 class Player {
