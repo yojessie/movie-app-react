@@ -325,7 +325,7 @@ const Tony: Player<null> = {
 
 : Typescript를 통해 Javscript의 객체지향 코드를 더 안전하고 좋게 만들 수 있다. <br><br>
 
-### Typescript code <br>
+#### Typescript code <br>
 
 - 파라미터를 선언하는 것만으로 constructor를 만들 수 있다.
 - 파라미터에 타입을 선언하면서 private, protected, public과 같은 키워드를 사용할 수 있다.
@@ -340,7 +340,7 @@ class Player {
 }
 ```
 
-### Javascript code
+#### Javascript code
 
 ```javascript
 class Player {
@@ -356,7 +356,7 @@ class Player {
 
 ### 2. Abstract Class 추상클래스
 
-: 추상클래스는 다른 클래스가 상속받게 하기 위한 클래스이다. <br>
+: 추상클래스는 다른 클래스가 상속받게 하기 위한 클래스이다. (TS에서만 제대로 작동) <br>
 : 추상클래스로 직접 새로운 인스턴스를 만들 수는 없다.<br>
 : 추상클래스 안에서 직접 메소드를 구현해서 상속받은 클래스가 바로 사용하게 할 수도 있지만, 추상메소드에 call signature를 넣어 정의하면 상속받은 클래스 내부에서 메소드 내용을 각각 구현해 사용할 수도 있다.
 
@@ -371,8 +371,8 @@ abstract class User {
   // 추상메소드를 만들려면 내부에서 직접 메소드 내용을 구현하지 않는다.
 }
 
-// 추상클래스로 바로 인스턴스 만들기는 불가능
-// const jessie = new User 는 사용할 수 없음
+// 추상클래스로 바로 인스턴스 만들면 에러 (TS에서만. JS에서는 그냥 되어버림)
+// const jessie = new User 는 에러
 
 class Player extends User {
   getNickName() {
