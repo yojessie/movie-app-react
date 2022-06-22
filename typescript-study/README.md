@@ -319,7 +319,7 @@ const Tony: Player<null> = {
 
 <br>
 
-## [ Classes & Interfaces ]
+## [ Classes ]
 
 ### 1. JS와 TS의 Class 비교
 
@@ -396,3 +396,139 @@ const jessie = new Player("Jessie", "Y", "yojessie");
 | private   | O                | X                  | X           |
 | protected | O                | O                  | X           |
 | public    | O                | O                  | O           |
+
+<br>
+
+### 4. class로 typescript 연습하기
+
+http://typescriptlang.org/play
+
+```typescript
+type Words = {
+  [key: string]: string;
+  // 오브젝트의 타입을 선언할때 사용. property에 대해 미리 알 수 없지만 타입을 알고 있을때 사용.
+};
+
+class Dict {
+  private words: Words;
+  constructor() {
+    this.words = {};
+  }
+  add(word: Word) {
+    if (this.words[word.term] === undefined) {
+      this.words[word.term] = `${word.term} : ${word.def}`;
+    }
+    console.log(this.words);
+  }
+  del(term: string) {
+    if (this.words[term] !== undefined) {
+      delete this.words[term];
+    }
+    console.log(this.words);
+  }
+  find(term: string) {
+    console.log(this.words[term]);
+  }
+}
+
+class Word {
+  constructor(
+    public readonly term: string,
+    public readonly def: string // 다른곳에서 접근은 가능하나, 수정하지는 못하게 readonly
+  ) {}
+}
+
+const peach = new Word("복숭아", "과일");
+const apple = new Word("사과", "과일");
+const melon = new Word("메론", "과일");
+
+const dict = new Dict();
+
+dict.add(peach);
+dict.add(apple);
+dict.add(melon);
+```
+
+<br>
+
+## [ Interfaces ]
+
+<br>
+
+### 1. type의 다양한 사용
+
+: type에 자료의 타입을 지정하는 것 외에, 특정 값을 지정해 줄수도 있다.
+
+```typescript
+type Team = 'red' | 'blue' | 'yellow'
+type Number = 1 | 5 | 10
+
+type Player = {
+  nickname: string,
+  team: Team,
+  number: Number
+}
+
+const jessie: Player = {
+  nickname: 'jessie'
+  team: 'pink' //error
+}
+```
+
+<br>
+
+### 2. type을 interface로 바꿔보자
+
+: type은 자료의 타입 지정, 특정 값 지정, 오브젝트의 모양을 특정하는 등 다양하게 활용할 수 있다. <br>
+: interface는 '오브젝트'의 모양을 특정하는 용도로만 사용한다.
+
+```typescript
+type Player = {
+  nickname: string;
+  team: Team;
+  number: Number;
+};
+
+// 위 아래 코드는 같다
+
+interface Player {
+  nickname: string;
+  team: Team;
+  number: Number;
+}
+```
+
+: interface는 class와 비슷한 구조로 사용할 수 있다. <br>
+: 문법구조를 객체지향 프로그래밍에 맞게 사용할 수 있어서 더 선호된다.
+
+```typescript
+interface User {
+  name: string;
+}
+
+interface Player extends User {}
+
+const jessie: Player = {
+  name: "jessie",
+};
+```
+
+: interface를 중첩해서 선언하는 것도 가능하다. (알아서 하나로 합쳐준다.)
+
+```typescript
+interface User {
+  name: string
+}
+interface User {
+  lastName: string
+}
+interface User {
+  health: number
+}
+
+const jessie: User = {
+  name: 'jessie'
+  lastName: 'Y'
+  health: 1
+}
+```
