@@ -532,3 +532,54 @@ const jessie: User = {
   health: 1
 }
 ```
+
+<br>
+
+### 3. Interface를 사용하는 이유 🤔
+
+: 추상클래스를 사용하면 객체지향 프로그래밍 코드를 만드는데 유리하다. <br>
+: 추상클래스를 만들면, 자바스크립트로 코드가 옮겨졌을때 abstract 단어가 빠져서 일반 클래스와 구분되지 않는다. <br>
+: 추상클래스 대산 Interface를 활용하면 자바스크립트로 변환되는 코드를 더 가볍게 만들 수 있다.
+
+```typescript
+abstract class User {
+  constructor(protected firstName: string, protected lastName: string) {}
+  abstract fullName(): string;
+  abstract sayHi(name: string): string;
+}
+class Player extends User {
+  fullName() {
+    return `something`;
+  }
+  sayHi(name: string) {
+    return `something`;
+  }
+}
+
+// 위의 추상클래스를 아래와 같이 바꿀 수 있다.
+
+interface User {
+  firstName: string;
+  lastName: string;
+  fullName(): string;
+  sayHi(name: string): string;
+}
+class Player implements User {
+  constructor(public firstName: string, public lastName: string) {}
+  fullName() {
+    return `something`;
+  }
+  sayHi(name: string) {
+    return `something`;
+  }
+}
+```
+
+- 추상클래스를 interface로 변경하고, 오브젝트 형태로 요소들의 타입을 정해준다.
+- class에서 extends 키워드를 implements로 바꿔주고, constructor를 만들어준다.
+- 추상클래스를 interface로 바꾸면 자바스크립트로 변환된 코드에 interface 코드는 보이지 않는다. (코드가 가벼워짐)
+- 그리고 여러 interface를 class가 상속받게 할 수도 있다.
+
+```typescript
+class Player implements User, Human {}
+```
