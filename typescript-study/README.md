@@ -45,7 +45,7 @@ let a: string = "hello";
 
 ### 3. 오브젝트 타입 지정
 
-: object의 각 속성 타입을 정해주고, optional한 속성은 ? 를 사용해 지정할 수 있다.
+- object의 각 속성 타입을 정해주고, optional한 속성은 ? 를 사용해 지정할 수 있다.
 
 ```typescript
 const player: {
@@ -60,7 +60,7 @@ const player: {
 
 ### 4. Alias type
 
-: 동일 타입을 가진 오브젝트가 여러개 있을때는 type을 별도로 만들어두고 여러 변수에 활용한다.
+- 동일 타입을 가진 오브젝트가 여러개 있을때는 type을 별도로 만들어두고 여러 변수에 활용한다.
 
 ```typescript
 type Player = {
@@ -80,7 +80,7 @@ const Mike : Player = {
 
 ### 5. 함수에서의 타입 지정
 
-: 파라미터의 타입을 아래와 같이 지정할 수 있다. 지정해둔 타입을 가져와 쓸 수 있다.
+- 파라미터의 타입을 아래와 같이 지정할 수 있다. 지정해둔 타입을 가져와 쓸 수 있다.
 
 ```typescript
 function playerMaker(name: string): Player {
@@ -119,8 +119,8 @@ jessie.name = "Mike"; // error (the name property is 'read only')
 
 ### 7. Tuple
 
-: array 값의 갯수와 순서를 지정하는 것
-<br>: 아이템 갯수가 안맞거나, 타입의 순서가 안맞으면 에러 발생
+- array 값의 갯수와 순서를 지정하는 것
+  <br>: 아이템 갯수가 안맞거나, 타입의 순서가 안맞으면 에러 발생
 
 ```typescript
 const player: [string, number, boolean] = ["Jessie", 1, true];
@@ -133,7 +133,7 @@ player[0] = 1;
 
 ### 8. 값의 타입을 미리 알 수 없을때는 unknown
 
-: 타입을 if문으로 먼저 체크한다음 실행코드를 만들어주어야 한다.
+- 타입을 if문으로 먼저 체크한다음 실행코드를 만들어주어야 한다.
 
 ```typescript
 let a: unknown;
@@ -157,9 +157,9 @@ function hello() {
 
 ### 10. never
 
-: 잘 안쓰지만 알아둬야 하는 타입.
-<br>: never는 함수가 리턴할 일이 없을때 발생한다.
-<br>: 어떤 값의 타입이 두가지 일 수 있는 상황에서, 예외의 경우에 never이 발생한다.
+- 잘 안쓰지만 알아둬야 하는 타입.
+- never는 함수가 리턴할 일이 없을때 발생한다.
+- 어떤 값의 타입이 두가지 일 수 있는 상황에서, 예외의 경우에 never이 발생한다.
 
 ```typescript
 function hello(name: string | number) {
@@ -182,8 +182,8 @@ function hello(name: string | number) {
 
 ### 1. Call Signatures
 
-: function의 타입을 정의한다. <br>
-: type으로 타입을 정의해놓고, 함수에 불러와서 사용한다.
+- function의 타입을 정의한다.
+- type으로 타입을 정의해놓고, 함수에 불러와서 사용한다.
 
 ```typescript
 type Add = (a: number, b: number) => number;
@@ -195,9 +195,9 @@ const add: Add = (a, b) => a + b;
 
 ### 2. Overloading
 
-: type 함수에 여러 타입을 만드는 것. <br>
-: overloading signature를 통해 함수를 다양한 방식으로 호출 할 수 있게한다. <br>
-: overloading은 직접 작성하기보다 외부 라이브러리에 자주 보이는 메소드로, 하나의 함수가 복수의 Call Signature를 가질때 발생한다.
+- type 함수에 여러 타입을 만드는 것.
+- overloading signature를 통해 함수를 다양한 방식으로 호출 할 수 있게한다.
+- overloading은 직접 작성하기보다 외부 라이브러리에 자주 보이는 메소드로, 하나의 함수가 복수의 Call Signature를 가질때 발생한다.
 
 ```typescript
 // Next.js의 라우터 push가 두 가지 방법으로 페이지를 이동하는 경우
@@ -244,9 +244,9 @@ add(1, 2, 3); // 두 경우 모두 문제 없음
 
 ### 3. Polymorphism (generic)
 
-: poly(many) morphism(structure) <br>
-: generic을 설정해 여러 타입을 가질 수 있게 하는 것. <br>
-: 모든 경우의 수에 해당하는 call sygnature를 작성해 줄 필요가 없어진다.
+- poly(many) morphism(structure)
+- generic을 설정해 여러 타입을 가질 수 있게 하는 것.
+- 모든 경우의 수에 해당하는 call sygnature를 작성해 줄 필요가 없어진다.
 
 ```typescript
 type SuperPrint = {
@@ -296,7 +296,7 @@ a.toUpperCase();
 
 ### 실제 generic의 사용
 
-: 직접 설정할일은 거의 없으나, 라이브러리나 패키지를 가져와 함수를 사용할때 generic으로 지정된 타입을 명확하게 하기 위해 많이 사용한다. (React의 useState가 generic으로 디자인되어 있다.)
+- 직접 설정할일은 거의 없으나, 라이브러리나 패키지를 가져와 함수를 사용할때 generic으로 지정된 타입을 명확하게 하기 위해 많이 사용한다. (React의 useState가 generic으로 디자인되어 있다.)
 
 ```typescript
 type Player<T> = {
@@ -323,7 +323,7 @@ const Tony: Player<null> = {
 
 ### 1. JS와 TS의 Class 비교
 
-: Typescript를 통해 Javscript의 객체지향 코드를 더 안전하고 좋게 만들 수 있다. <br><br>
+- Typescript를 통해 Javscript의 객체지향 코드를 더 안전하고 좋게 만들 수 있다. <br><br>
 
 #### Typescript code <br>
 
@@ -356,9 +356,9 @@ class Player {
 
 ### 2. Abstract Class 추상클래스
 
-: 추상클래스는 다른 클래스가 상속받게 하기 위한 클래스이다. (TS에서만 제대로 작동) <br>
-: 추상클래스로 직접 새로운 인스턴스를 만들 수는 없다.<br>
-: 추상클래스 안에서 직접 메소드를 구현해서 상속받은 클래스가 바로 사용하게 할 수도 있지만, 추상메소드에 call signature를 넣어 정의하면 상속받은 클래스 내부에서 메소드 내용을 각각 구현해 사용할 수도 있다.
+- 추상클래스는 다른 클래스가 상속받게 하기 위한 클래스이다. (TS에서만 제대로 작동)
+- 추상클래스로 직접 새로운 인스턴스를 만들 수는 없다.
+- 추상클래스 안에서 직접 메소드를 구현해서 상속받은 클래스가 바로 사용하게 할 수도 있지만, 추상메소드에 call signature를 넣어 정의하면 상속받은 클래스 내부에서 메소드 내용을 각각 구현해 사용할 수도 있다.
 
 ```typescript
 abstract class User {
@@ -389,7 +389,7 @@ const jessie = new Player("Jessie", "Y", "yojessie");
 
 ### 3. private, protected, public 접근가능 위치
 
-: 타입 선언 앞에 어떤 키워드를 사용했느냐에 따라 해당 파라미터의 사용 범위가 달라진다.
+- 타입 선언 앞에 어떤 키워드를 사용했느냐에 따라 해당 파라미터의 사용 범위가 달라진다.
 
 | 키워드    | 선언한 클래스 내 | 상속받은 클래스 내 | 인스턴스 내 |
 | --------- | ---------------- | ------------------ | ----------- |
@@ -457,7 +457,7 @@ dict.add(melon);
 
 ### 1. type의 다양한 사용
 
-: type에 자료의 타입을 지정하는 것 외에, 특정 값을 지정해 줄수도 있다.
+- type에 자료의 타입을 지정하는 것 외에, 특정 값을 지정해 줄수도 있다.
 
 ```typescript
 type Team = 'red' | 'blue' | 'yellow'
@@ -479,8 +479,8 @@ const jessie: Player = {
 
 ### 2. type을 interface로 바꿔보자
 
-: type은 자료의 타입 지정, 특정 값 지정, 오브젝트의 모양을 특정하는 등 다양하게 활용할 수 있다. <br>
-: interface는 '오브젝트'의 모양을 특정하는 용도로만 사용한다.
+- type은 자료의 타입 지정, 특정 값 지정, 오브젝트의 모양을 특정하는 등 다양하게 활용할 수 있다.
+- interface는 '오브젝트'의 모양을 특정하는 용도로만 사용한다.
 
 ```typescript
 type Player = {
@@ -498,8 +498,8 @@ interface Player {
 }
 ```
 
-: interface는 class와 비슷한 구조로 사용할 수 있다. <br>
-: 문법구조를 객체지향 프로그래밍에 맞게 사용할 수 있어서 더 선호된다.
+- interface는 class와 비슷한 구조로 사용할 수 있다.
+- 문법구조를 객체지향 프로그래밍에 맞게 사용할 수 있어서 더 선호된다.
 
 ```typescript
 interface User {
@@ -513,7 +513,7 @@ const jessie: Player = {
 };
 ```
 
-: interface를 중첩해서 선언하는 것도 가능하다. (알아서 하나로 합쳐준다.)
+- interface를 중첩해서 선언하는 것도 가능하다. (알아서 하나로 합쳐준다.)
 
 ```typescript
 interface User {
@@ -537,9 +537,9 @@ const jessie: User = {
 
 ### 3. Interface를 사용하는 이유 🤔
 
-: 추상클래스를 사용하면 객체지향 프로그래밍 코드를 만드는데 유리하다. <br>
-: 추상클래스를 만들면, 자바스크립트로 코드가 옮겨졌을때 abstract 단어가 빠져서 일반 클래스와 구분되지 않는다. <br>
-: 추상클래스 대산 Interface를 활용하면 자바스크립트로 변환되는 코드를 더 가볍게 만들 수 있다.
+- 추상클래스를 사용하면 객체지향 프로그래밍 코드를 만드는데 유리하다.
+- 추상클래스를 만들면, 자바스크립트로 코드가 옮겨졌을때 abstract 단어가 빠져서 일반 클래스와 구분되지 않는다.
+- 추상클래스 대산 Interface를 활용하면 자바스크립트로 변환되는 코드를 더 가볍게 만들 수 있다.
 
 ```typescript
 abstract class User {
@@ -577,9 +577,45 @@ class Player implements User {
 
 - 추상클래스를 interface로 변경하고, 오브젝트 형태로 요소들의 타입을 정해준다.
 - class에서 extends 키워드를 implements로 바꿔주고, constructor를 만들어준다.
-- 추상클래스를 interface로 바꾸면 자바스크립트로 변환된 코드에 interface 코드는 보이지 않는다. (코드가 가벼워짐)
+- 추상클래스를 interface로 바꾸면 자바스크립트로 컴파일 되지 않아 코드가 가벼워진다.
 - 그리고 여러 interface를 class가 상속받게 할 수도 있다.
 
 ```typescript
 class Player implements User, Human {}
 ```
+
+<br>
+
+### 4. type aliases와 Interfaces의 차이점
+
+- type과 interface는 유사한 기능을하며 자유롭게 선택해 사용할 수 있다.
+- 둘 다 추상클래스를 대체해 사용할 수 있다.
+- type은 같은 이름으로 재선언해서 새 속성을 추가할 수 없으나, interface는 가능하다.
+
+```typescript
+type Player = {
+  firstName: string;
+};
+type PlayerA = Player & {
+  lastName: string;
+};
+const jessie: PlayerA = {
+  firstName: "jessie",
+  lastName: "Y",
+};
+
+// 위 내용을 interface로 바꾸면
+
+interface Player {
+  firstName: string;
+}
+interface Player {
+  lastName: string;
+}
+const jessie: Player = {
+  firstName: "jessie",
+  lastName: "Y",
+};
+```
+
+- 오브젝트의 모양을 정의할떄 interface의 사용이 권장된다. 인터페이스를 상속시키는 방법이 직관적이기 때문. (새 속성을 직관적으로 추가할 수 있어서)
